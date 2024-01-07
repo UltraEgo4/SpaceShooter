@@ -72,4 +72,4 @@ const Resource& ResourceHolder<Resource,Identifier>::get (Identifier id) const{
 }
 
 
-#endif
+#endif  //RESOURCEHOLDER_H

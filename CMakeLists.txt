@@ -39,10 +39,26 @@
 # - should be regenerated every time you add or remove source files, change compiler flags, or other adjustments
 
 
+#Fetch libraries and dependencies commands
+# - allows you to automatically download and integrate external projects into cmake
+# - it checks if the fetched  content is already download locally or not
+# 
+# - 1. include allows to fetch
+# - 2. you can decleare the content with FetchContent_Declare (name, repo, branch)
+# - 3. make the fetched content available in this current project
+#Commands
+#include(FetchContent)
+#FetchContent_Declare(
+#   sfml
+#   GIT_REPOSITORY https://github.com/SFML/SFML.git
+#   GIT_TAG        2.5.x
+#)
+#FetchContent_MakeAvailable(sfml)
+
 
 #ACTUAL TODO FOR THIS CMakeLists.txt
-# - downloading sfml for Windows and Linux
-# - set compiler flags for Windows and Linux
+# - decide if user has to download SFML manually or use fetch in CMake
+# - set compiler flags for Windows and Linux ( default compiler flags are probably enough dont have to explicitly specify it)
 
 
 
@@ -69,8 +85,10 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 #copy resource to the executable folder (TEMP SOLUTION CURRENTLY)
 file(COPY ${CMAKE_SOURCE_DIR}/resources DESTINATION ${CMAKE_BINARY_DIR})
 
-# find the SFML libraries on your machine (if installed)
+# find the SFML libraries on your machine (if installed) (faster builds)
 find_package(SFML 2.5 COMPONENTS system window graphics audio network REQUIRED)
+
+
 
 #executable
 add_executable(spaceshooter ${SOURCES})

@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif
+#endif  //ENTITY_H
